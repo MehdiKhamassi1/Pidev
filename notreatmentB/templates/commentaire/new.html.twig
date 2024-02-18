@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Nouveau Commentaire'|capitalize }}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>{{ 'Créer un nouveau Commentaire'|capitalize }}</h1>
+<br><br><br><br><br>
+        {{ include('commentaire/_form.html.twig') }}
+
+        <a href="{{ path('app_commentaire_index') }}" class="btn btn-secondary mt-3">
+            {{ 'Retour à la liste'|trans }}
+        </a>
+    </div>
+{% endblock %}

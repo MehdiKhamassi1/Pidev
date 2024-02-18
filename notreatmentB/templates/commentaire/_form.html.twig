@@ -1,0 +1,14 @@
+{# Utilisation de la fonction form_start avec attributs supplémentaires #}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    {# Affichage des éléments du formulaire #}
+    {{ form_widget(form) }}
+
+    {# Bouton de soumission du formulaire avec classe CSS personnalisée #}
+    <button class="btn">
+        {{ button_label|default('Save') }}
+    </button>
+
+{# Utilisation de la fonction form_end pour terminer le formulaire #}
+{{ form_end(form) }}
+

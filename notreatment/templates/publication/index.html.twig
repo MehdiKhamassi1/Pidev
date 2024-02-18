@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Publication Index
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="display-4 mb-5">Publication List</h1>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for publication in publications %}
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ publication.titre }}</h5>
+                            <img src="{{ asset('uploads/publication/' ~ publication.image) }}" alt="Publication Image" class="img-fluid mb-3">
+
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ path('app_publication_show', {'id': publication.id}) }}" class="btn btn-primary">Show</a>
+                                <a href="{{ path('app_publication_edit', {'id': publication.id}) }}" class="btn btn-primary">Edit</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="mt-4">
+            <a href="{{ path('app_publication_new') }}" class="btn btn-success">Create New</a>
+        </div>
+    </div>
+
+
+{% endblock %}

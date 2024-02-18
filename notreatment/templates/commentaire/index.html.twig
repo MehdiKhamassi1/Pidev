@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Commentaire Index'|capitalize }}
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+    <br><br><br><br><br><br>
+        <h1 class="display-4">Comment List</h1>
+        <div class="my-5"></div>
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Publicaion_ID</th>
+                    <th scope="col">Contenu</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commentaire in commentaires %}
+                    <tr>
+                        <td>{{ commentaire.id }}</td>
+                        <td>{{ commentaire.publication.id }}</td>
+                        <td>{{ commentaire.contenu }}</td>
+                        
+                        <td>
+                            <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}" class="btn btn-info btn-sm">
+                                {{ 'Voir'|trans }}
+                            </a>
+                            <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}" class="btn btn-warning btn-sm">
+                                {{ 'Éditer'|trans }}
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">{{ 'Aucun commentaire trouvé.'|trans }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_commentaire_new') }}" class="btn btn-success">
+            {{ 'Créer un nouveau commentaire'|trans }}
+        </a>
+    </div>
+{% endblock %}

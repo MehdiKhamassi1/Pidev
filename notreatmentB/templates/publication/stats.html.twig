@@ -1,0 +1,28 @@
+{# stats.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques des Publications{% endblock %}
+
+{% block body %}
+    <h1>Statistiques des Publications</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Nombre de Commentaires</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in stats %}
+                <tr>
+                    <td>{{ stat.id }}</td>
+                    <td>{{ stat.titre }}</td>
+                    <td>{{ stat.commentCount }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

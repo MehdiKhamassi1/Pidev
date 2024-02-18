@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Publication Index
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="display-4">Publication List</h1>
+        <div class="my-5"></div>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Contenu</th>
+                    <th scope="col">Titre</th>                  
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if publications is not empty %}
+                    {% for publication in publications %}
+                        <tr>
+                            <td>{{ publication.id }}</td>
+                            <td>{{ publication.contenu }}</td>
+                            <td>{{ publication.titre }}</td>
+                            <td>
+                                <a href="{{ path('app_publication_show', {'id': publication.id}) }}" class="btn btn-info btn-sm">Show</a>
+                                <a href="{{ path('app_publication_edit', {'id': publication.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">No Publications found</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_publication_new') }}" class="btn btn-success">Create New</a>
+    </div>
+{% endblock %}

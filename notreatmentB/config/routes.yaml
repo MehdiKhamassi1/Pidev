@@ -1,0 +1,9 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+# routes.yaml
+
+app_publication_stats:
+    path: '/publication/stats'
+    controller: 'App\Controller\PublicationController::stats'
+    methods: ['GET']
