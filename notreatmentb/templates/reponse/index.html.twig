@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reponse index{% endblock %}
+
+{% block body %}
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <center><h1>Reponse index</h1></center>
+
+    <table class="table" style="font-size: 14px;" >
+        <thead style="background-color: #5AAC4E; color: #fff;">
+            <tr>
+                <th>Id</th>
+                <th>Response</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reponse in reponses %}
+            <tr>
+                <td>{{ reponse.id }}</td>
+                <td>{{ reponse.response }}</td>
+                <td>
+
+                <a href="{{ path('app_reponse_show', {'id': reponse.id}) }}" style="display: inline-block; padding: 4px 8px; background-color: #5AAC4E; color: #fff; text-decoration: none; border-radius: 4px;">Show</a>
+                   
+                <a href="{{ path('app_reponse_edit', {'id': reponse.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   <center> <a href="{{ path('app_reponse_new') }} ">Create new</a> </center>
+{% endblock %}
