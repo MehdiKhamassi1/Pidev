@@ -1,0 +1,50 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Charity Organizations{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('path/to/your/styles.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="table-title">
+        <h3>Charity Organizations List</h3>
+    </div>
+
+    <div class="org-container">
+        {% for organisation in organisations %}
+        <div class="org-box">
+        <center>
+            <h4>{{ organisation.nom }}</h4>
+            <div class="org-box-content">
+               <center>
+                <p><strong>Address:</strong> {{ organisation.adresse }}</p>
+                <p><strong>Email:</strong> {{ organisation.email }}</p>
+                <p><strong>Phone Number:</strong> {{ organisation.numTel }}</p>
+                <img src="{{ asset('uploads/orgs/' ~ organisation.image) }}" alt="Organisation Image"  style="max-height: 100px; max-width: 100px; border-radius: 5px;">
+            </div>
+            <div class="org-box-actions">
+            <br>
+                <a href="{{ path('app_organisation_show', {'id': organisation.id}) }}" class="action-link">Show</a>
+                
+                <a href="{{ path('app_organisation_edit', {'id': organisation.id}) }}" class="action-link">Edit</a>
+                <br><br>
+                {{ include('organisation/_delete_form.html.twig') }}
+            </div>
+        </div>
+        </center>
+        {% else %}
+        <p>No records found</p>
+        {% endfor %}
+    </div>
+
+    <center>
+        <a href="{{ path('app_organisation_new') }}" class="btn-create">Create new</a>
+    </center>
+</div>
+
+<br><br><br>
+{% endblock %}
