@@ -1,0 +1,52 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}docteur  index{% endblock %}
+ {% block body %}
+ {% endblock %}
+{% block content %}
+    <h1>Docteur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Date_naissance</th>
+                <th>Specialite</th>
+                <th>Email</th>
+                <th>Mdp</th>
+                <th>Numtel</th>
+                                <th>image</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for docteur in docteurs %}
+            <tr>
+                <td>{{ docteur.id }}</td>
+                <td>{{ docteur.nom }}</td>
+                <td>{{ docteur.prenom }}</td>
+                <td>{{ docteur.date_de_naissance }}</td>
+                <td>{{ docteur.specialite }}</td>
+                <td>{{ docteur.email }}</td>
+                <td>{{ docteur.mdp }}</td>
+                <td>{{ docteur.numtel }}</td>
+                <td> <img src="{{ asset('uploads/docteur/' ~ docteur.profileImage) }}" alt="docteur Image" class="img-fluid mb-3" height="100px" width="100px"> </td>
+
+                <td>
+                    <a href="{{ path('app_docteur_show', {'id': docteur.id}) }}">show</a>
+                    <a href="{{ path('app_docteur_edit', {'id': docteur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_docteur_new') }}">Create new</a>
+{% endblock %}

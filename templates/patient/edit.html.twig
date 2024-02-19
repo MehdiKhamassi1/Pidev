@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+ {% block body %}
+ {% endblock %}
+{% block content %}
+<br>
+
+<br>
+<br>
+<center>
+    {{ include('patient/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_patient_index') }}">back to list</a>
+
+    {{ include('patient/_delete_form.html.twig') }}
+    </center>
+{% endblock %}
