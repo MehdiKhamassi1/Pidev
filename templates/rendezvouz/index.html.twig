@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rendezvouz index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <h1 class="mt-5">Rendez-vous</h1>
+
+        <div class="table-responsive mt-4">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-light"> <!-- Modification de la classe ici -->
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Date RDV</th>
+                        <th scope="col">local</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rendezvouz in rendezvouzs %}
+                        <tr>
+                            <td>{{ rendezvouz.id }}</td>
+                            <td>{{ rendezvouz.daterdv|date('Y-m-d H:i:s')}}</td>
+                            <td>
+                                {% if rendezvouz.local %}
+                                    {{ rendezvouz.local.nom }}
+                                {% else %}
+                                    Aucun local attribué
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="{{ path('app_rendezvouz_show', {'id': rendezvouz.id}) }}">Voir</a>
+                                <a class="btn btn-primary btn-sm" href="{{ path('app_rendezvouz_edit', {'id': rendezvouz.id}) }}">Éditer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucun enregistrement trouvé</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a class="btn btn-success mt-3" href="{{ path('app_rendezvouz_new') }}">Créer un nouveau rendez-vous</a>
+    </div>
+{% endblock %}

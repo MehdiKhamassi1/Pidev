@@ -1,0 +1,70 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Edit Local{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        /* Container */
+        .container {
+            padding-top: 50px; /* Ajuster la marge supérieure */
+            padding-bottom: 50px; /* Ajuster la marge inférieure */
+            text-align: center; /* Centrer le contenu */
+        }
+
+        /* Header */
+        .container h1 {
+            color: green; /* Définir la couleur du texte de l'en-tête en vert */
+            margin-top: 20px; /* Ajouter de l'espace au-dessus de l'en-tête */
+        }
+
+        /* Form container */
+        .form-container {
+            margin-top: 30px; /* Ajouter de l'espace au-dessus du formulaire */
+            text-align: left; /* Aligner les éléments du formulaire à gauche */
+        }
+
+        /* Form fields */
+        .form-container label {
+            display: block; /* Faire des balises de libellé des éléments de bloc */
+            margin-bottom: 10px; /* Ajouter de l'espace en dessous de chaque libellé */
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 20px; /* Ajouter de l'espace au-dessus des boutons */
+        }
+
+        /* Delete form */
+        .delete-form {
+            margin-top: 30px; /* Ajouter de l'espace au-dessus du formulaire de suppression */
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Edit Local</h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-container">
+                    {{ include('local/_form.html.twig', {'button_label': 'Update'}) }}
+                </div>
+
+                <div class="buttons mt-4">
+                    <a class="btn btn-primary" href="{{ path('app_local_index') }}">Retour à la liste</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="delete-form">
+                    {{ include('local/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
