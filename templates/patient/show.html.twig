@@ -5,18 +5,25 @@
  
  {% endblock %}
 {% block content %}
-
-
-
     <h1>Patient</h1>
-
-
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ patient.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ patient.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ patient.roles ? patient.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ patient.password }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
@@ -27,34 +34,25 @@
                 <td>{{ patient.prenom }}</td>
             </tr>
             <tr>
-                <th>Date_naissance</th>
-                <td>{{ patient.date_de_nassance }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ patient.email }}</td>
-            </tr>
-           
-            <tr>
                 <th>Numtel</th>
                 <td>{{ patient.numtel }}</td>
             </tr>
             <tr>
-                <th>Age</th>
-                <td>{{ patient.age }}</td>
+                <th>Birth</th>
+                <td>{{ patient.birth | date('Y-m-d ')  }}</td>
+            </tr>
+            <tr>
+                <th>Profile_image</th>
+                <td> <img src="{{ asset('uploads/patient/' ~ patient.profileImage) }}" alt="patient Image" class="img-fluid mb-3" height="100px" width="100px"> </td>
             </tr>
             <tr>
                 <th>Gender</th>
                 <td>{{ patient.gender }}</td>
             </tr>
-             <tr>
-                <th>image</th>
-                <td> <img src="{{ asset('uploads/patient/' ~ patient.profileImage) }}" alt="patient Image" class="img-fluid mb-3" height="100px" width="100px"> </td>
-            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_home') }}">back to list</a>
+    <a href="{{ path('app_patient_index') }}">back to list</a>
 
     <a href="{{ path('app_patient_edit', {'id': patient.id}) }}">edit</a>
 

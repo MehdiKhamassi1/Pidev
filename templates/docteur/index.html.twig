@@ -10,15 +10,16 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Date_naissance</th>
-                <th>Specialite</th>
-                <th>Email</th>
-                <th>Mdp</th>
                 <th>Numtel</th>
-                                <th>image</th>
-
+                <th>Birth</th>
+                <th>Profile_image</th>
+                <th>Gender</th>
+                <th>Specialite</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,15 +27,16 @@
         {% for docteur in docteurs %}
             <tr>
                 <td>{{ docteur.id }}</td>
+                <td>{{ docteur.email }}</td>
+                <td>{{ docteur.roles ? docteur.roles|json_encode : '' }}</td>
+                <td>{{ docteur.password }}</td>
                 <td>{{ docteur.nom }}</td>
                 <td>{{ docteur.prenom }}</td>
-                <td>{{ docteur.date_de_naissance }}</td>
-                <td>{{ docteur.specialite }}</td>
-                <td>{{ docteur.email }}</td>
-                <td>{{ docteur.mdp }}</td>
                 <td>{{ docteur.numtel }}</td>
-                <td> <img src="{{ asset('uploads/docteur/' ~ docteur.profileImage) }}" alt="docteur Image" class="img-fluid mb-3" height="100px" width="100px"> </td>
-
+                <td>{{ docteur.birth ? docteur.birth|date('Y-m-d H:i:s') : '' }}</td>
+                <td> <img src="{{ asset('uploads/' ~ docteur.profileImage) }}" alt="docteur Image" class="img-fluid mb-3" height="100px" width="100px"> </td>
+                <td>{{ docteur.gender }}</td>
+                <td>{{ docteur.specialite }}</td>
                 <td>
                     <a href="{{ path('app_docteur_show', {'id': docteur.id}) }}">show</a>
                     <a href="{{ path('app_docteur_edit', {'id': docteur.id}) }}">edit</a>
@@ -42,7 +44,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="12">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

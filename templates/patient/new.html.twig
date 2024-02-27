@@ -1,6 +1,5 @@
 
 
-
 {% block css %}
 
     <style>
@@ -158,40 +157,45 @@ form .user-details .input-box{
       
     </style>
  {% endblock %}
-
- {% block body %}
+{% block body %}
  {% endblock %}
 
 {% block content %}
-
+    
 <div class="container">
     <div class="title">Registration</div>
     <div class="content">
-        {{ form_start(form) }}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         <div class="user-details">
+
             <div class="input-box">
                 {{ form_row(form.nom, {'attr': {'placeholder': 'Enter your name'}}) }}
             </div>
+
             <div class="input-box">
                 {{ form_row(form.prenom, {'attr': {'placeholder': 'Enter your username'}}) }}
             </div>
+
             <div class="input-box">
                 {{ form_row(form.email, {'attr': {'placeholder': 'Enter your email'}}) }}
             </div>
+
             <div class="input-box">
                 {{ form_row(form.numtel, {'attr': {'placeholder': 'Enter your phone number'}}) }}
             </div>
-            <div class="input-box">
-                {{ form_row(form.mdp, {'attr': {'placeholder': 'Enter your password'}}) }}
-            </div>
-            <div class="input-box">
-                {{ form_row(form.date_de_nassance) }} 
 
+            <div class="input-box">
+                {{ form_row(form.password, {'attr': {'placeholder': 'Enter your password'}}) }}
             </div>
-                <div class="input-box">
-                {{ form_row(form.age, {'attr': {'placeholder': 'Enter your age'}}) }}
+
+            <div class="input-box">
+                {{ form_row(form.birth) }} 
+  
             </div>
+
+              
         </div>
+        
         <div class="gender-details">
             <span class="gender-title">Gender</span>
             <div class="category">
@@ -199,39 +203,28 @@ form .user-details .input-box{
             </div>
         </div>
 
-
-
-<div class="input-box">
+         <div class="input-box">
     {{ form_row(form.profileImage) }}
-</div>
-
-
-
-
-
-
-
-
+            </div>
         <div class="button">
             <button type="submit">Register</button>
         </div>
 
-    <a href="{{ path('app_patient_index') }}">back to list</a>
 
 
+        {{ form_end(form) }}
+
+
+
+
+
+    <!--<a href="{{ path('app_patient_index') }}">back to list</a>
+
+-->
 
 
        
-        {{ form_end(form) }}
-         {% for child in form %}
-            {% if child.vars.errors|length > 0 %}
-                <div class="error-message" style="color: red;">
-                    {% for error in child.vars.errors %}
-                        {{ error.message }}
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endfor %}
+       
     </div>
 </div>
 

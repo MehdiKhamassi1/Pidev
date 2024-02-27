@@ -1,6 +1,6 @@
 {% extends 'baseback.html.twig' %}
 
-{% block title %}Patient  index{% endblock %}
+{% block title %}docteur  index{% endblock %}
  {% block body %}
  {% endblock %}
 {% block content %}
@@ -10,15 +10,15 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Date_naissance</th>
-                <th>Email</th>
-                <th>Mdp</th>
                 <th>Numtel</th>
-                <th>Age</th>
+                <th>Birth</th>
+                <th>Profile_image</th>
                 <th>Gender</th>
-                <th>image</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -26,24 +26,23 @@
         {% for patient in patients %}
             <tr>
                 <td>{{ patient.id }}</td>
+                <td>{{ patient.email }}</td>
+                <td>{{ patient.roles ? patient.roles|json_encode : '' }}</td>
+                <td>{{ patient.password }}</td>
                 <td>{{ patient.nom }}</td>
                 <td>{{ patient.prenom }}</td>
-                <td>{{ patient.date_de_nassance }}</td>
-                <td>{{ patient.email }}</td>
-                <td>{{ patient.mdp }}</td>
                 <td>{{ patient.numtel }}</td>
-                <td>{{ patient.age }}</td>
+                <td>{{ patient.birth ? patient.birth|date('Y-m-d ') : '' }}</td>
+                <td> <img src="{{ asset('uploads/' ~ patient.profileImage) }}" alt="patient Image" class="img-fluid mb-3" height="100px" width="100px"> </td>
                 <td>{{ patient.gender }}</td>
-                <td> <img src="{{ asset('uploads/patient/' ~ patient.profileImage) }}" alt="patient Image" class="img-fluid mb-3" height="100px" width="100px"> </td>
-
                 <td>
-                    <a href="{{ path('app_patient_show', {'email': patient.email}) }}">show</a>
+                    <a href="{{ path('app_patient_show', {'id': patient.id}) }}">show</a>
                     <a href="{{ path('app_patient_edit', {'id': patient.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="11">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

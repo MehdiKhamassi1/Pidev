@@ -183,14 +183,21 @@ form .user-details .input-box{
                 {{ form_row(form.numtel, {'attr': {'placeholder': 'Enter your phone number'}}) }}
             </div>
             <div class="input-box">
-                {{ form_row(form.mdp, {'attr': {'placeholder': 'Enter your password'}}) }}
+                {{ form_row(form.password, {'attr': {'placeholder': 'Enter your password'}}) }}
             </div>
             <div class="input-box">
-                {{ form_row(form.date_de_naissance) }} 
+                {{ form_row(form.birth) }} 
         </div>
         <div class="input-box">
                 {{ form_row(form.specialite, {'attr': {'placeholder': 'Enter your speciality'}}) }} 
         </div>
+        </div>
+         
+        <div class="gender-details">
+            <span class="gender-title">Gender</span>
+            <div class="category">
+                {{ form_row(form.gender) }}
+            </div>
         </div>
         <div class="input-box">
     {{ form_row(form.profileImage) }}

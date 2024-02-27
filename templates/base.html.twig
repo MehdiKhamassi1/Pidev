@@ -61,9 +61,9 @@
 	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
     <div class="top_bar_item">
         {% if is_granted('ROLE_PATIENT') %}
-            <a href="{{ path('app_patient_show', {'email': app.user.email}) }}">Profile</a>
+            <a href="{{ path('app_patient_show', {'id': app.user.id}) }}">Profile</a>
         {% elseif is_granted('ROLE_DOCTEUR') %}
-            <a href="{{ path('app_docteur_show', {'email': app.user.email}) }}">Profile</a>
+            <a href="{{ path('app_docteur_show', {'id': app.user.id}) }}">Profile</a>
         {% endif %}
     </div>
     <div class="top_bar_item"><a href="{{ path('app_logout')}}">Logout</a></div>
