@@ -1,0 +1,4 @@
+dossier_medical_statistics:
+    path: '/dossiermedical/statistics'
+    controller: 'App\Controller\DossiermedicalController::statistics'
+    methods: ['GET','POST']

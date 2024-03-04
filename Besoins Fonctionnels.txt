@@ -1,0 +1,94 @@
+Besoins fonctionnels:
+
+Gestion des utilisateurs:
+S'authentifier
+Gérer un compte
+Gérer les réclamations
+Gérer les dons
+Gérer les forums
+
+Admin:
+S'authentifier
+Gérer les comptes
+Gérer les réclamations
+Gérer les dons
+Gérer les forums
+
+
+Docteur:
+
+S'authentifier
+Créer un compte
+Consulter les informations du compte
+Mettre à jour les informations du compte
+Supprimer un compte 
+Faire une Réclamation
+Gérer les dossiers médicaux
+Participer au forum
+
+
+Patient:
+
+S'authentifier
+Afficher informations compte
+Mettre à jour les informations du compte
+Supprimer un compte 
+Faire une réclamation
+Evaluer une consultation
+Participer au forum
+
+*Gestion des forums:
+
+-Ajouter un article dans le forum   Docteur
+
+-Mettre à jour un article Docteur
+
+-Commenter un article Docteur/Patient
+
+-Supprimer un article Docteur/Admin
+
+
+*Gestion des dons:
+
+-Publier une annonce utilisateur/Employés gestion des dons
+
+-Gérer un produit utilisate
+
+
+
+
+
+*Gestion des dossiers médicaux:
+
+-Remplir un dossier médical      Docteur
+
+-Mettre à jour un dossier médical   Docteur
+
+-Supprimer un dossier médical  Admin/Docteur
+
+
+*Gestion des rendez-vous:
+
+-Réserver un rendez-vous   Patient
+
+-Mettre à jour un rendez-vous  Patient
+
+-Annuler un rendez-vous  Admin/Patient
+
+-Echanger un rendez-vous Patient
+
+
+*Gestion des réclamations:
+
+-Faire une réclamation Patient/Docteur
+
+-Gérer une réclamation Admin
+
+
+
+
+
+
+
+
+

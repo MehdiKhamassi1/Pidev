@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le Commentaire{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+    <br><br><br><br><br><br><br><br>
+        <h1 class="mb-4">Modifier le Commentaire</h1>
+
+        {{ include('commentaire/_form.html.twig', {'button_label': 'Mettre à jour', 'button_class': 'btn-success'}) }}
+
+        <div class="mt-4">
+            <a href="{{ path('app_commentaire_indexB') }}" class="btn btn-secondary">Retour à la liste</a>
+        </div>
+
+        {{ include('commentaire/_delete_form.html.twig', {'button_class': 'btn-danger'}) }}
+    </div>
+{% endblock %}

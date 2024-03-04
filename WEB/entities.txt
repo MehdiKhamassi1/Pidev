@@ -1,0 +1,6 @@
+Forums: Utilisateurs + Messages Forum
+Locaux: Spécialistes + équipe médicale (pour les communiquer en cas de besoin)
+RDV:    
+Users: historique des paiements + notifications des posts/Rappel RDV
+Labos: résultats Tests
+Reclamations:

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Consultation Index'|capitalize }}
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+    <br><br><br><br><br><br>
+        <h1 class="display-4">Consultation List</h1>
+        <div class="my-5"></div>
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Patient_ID</th>
+                    <th scope="col">Docteur_ID</th>
+                    <th scope="col">Dossier medical ID</th>
+                    <th scope="col">Date Consultation</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for consultation in consultations %}
+                    <tr>
+                        <td>{{ consultation.id }}</td>
+                        <td>{{ consultation.patient_id }}</td>
+                        <td>{{ consultation.docteur_id }}</td>
+                        <td>{{ consultation.dossiermedical_id }}</td>
+                        <td>{{ consultation.date_consultation }}</td>
+                        <td>
+                            <a href="{{ path('app_consultation_show', {'id': consultation.id}) }}" class="btn btn-info btn-sm">
+                                {{ 'Voir'|trans }}
+                            </a>
+                            <a href="{{ path('app_consultation_edit', {'id': consultation.id}) }}" class="btn btn-warning btn-sm">
+                                {{ 'Éditer'|trans }}
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">{{ 'Aucune consultation trouvée.'|trans }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_consultation_new') }}" class="btn btn-success">
+            {{ 'Créer une nouvelle consultation'|trans }}
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: auto
+
+    providers:
+        db_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+            provider: db_provider
+            form_login:
+                default_target_path: app_home 
+                login_path: app_login  
+                check_path: app_login
+            logout:
+                path: app_logout
+                target: app_login
+            remember_me:
+                secret: '%env(APP_SECRET)%'
+
+    access_control:
+    - { path: ^/homea, roles: ROLE_PATIENT or ROLE_DOCTEUR or ROLE_ADMIN}
+    - { path: ^/back, roles: ROLE_ADMIN }
+
+
+

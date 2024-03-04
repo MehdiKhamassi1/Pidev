@@ -1,0 +1,82 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %} Edit Donations {% endblock %}
+
+{% block content %}
+<center>
+<br><br><br>
+    <h1> <center> Edit Donations </center> </h1>
+<br>
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <div class="form-group">
+                    {{ form_label(form.nom) }}
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.nom) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.nom) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-container mt-4">
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <div class="form-group">
+                    {{ form_label(form.prenom) }}
+                    {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.prenom) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.prenom) }}
+                        </div>
+                    {% endif %}
+                </div>
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <div class="form-group">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.email) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.email) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.type) }}
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.type) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.type) }}
+                        </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.description) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.description) }}
+                        </div>
+                    {% endif %}
+
+
+                    <div class="form-group">
+                    {{ form_label(form.montant) }}
+                    {{ form_widget(form.montant, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.montant) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.montant) }}
+                        </div>
+                    {% endif %}
+                    
+                    
+    {{ include('don/_form.html.twig', {'button_label': 'Update'}) }}
+<br>
+    <a href="{{ path('app_don_indexB') }}" class="btn btn-primary">Back to list</a>
+<br><br>
+    {{ include('don/_delete_form.html.twig') }}
+    <br><br>
+    </center>
+
+{% endblock %}

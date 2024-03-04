@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dossiermedical {% endblock %}
+
+{% block content %}
+<div>
+    <h1>Dossier medical </h1> </div>
+    <br><br><br><br> 
+
+    <div class="mb-5">
+        <a href="{{ path('app_dossiermedical_new') }}" class="btn btn-secondary">Create New</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Groupesang</th>
+                <th>Maladiechronique</th>
+                <th>Resultat analyse</th>
+                <th>Edit</th>
+                <th>Show</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dossiermedical in dossiermedicals %}
+                <tr>
+                    <td>{{ dossiermedical.id }}</td>
+                    <td>{{ dossiermedical.groupesang }}</td>
+                    <td>{{ dossiermedical.maladiechronique }}</td>
+                    <td>{{ dossiermedical.Resultatanalyse }}</td>
+                    <td> <a href="{{ path('app_dossiermedical_edit', {'id': dossiermedical.id}) }}">edit</a></td>
+                    <td>
+                        <a href="{{ path('app_dossiermedical_show', {'id': dossiermedical.id}) }}">show</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+    
+
+        </tbody>
+    </table>
+     <div class="mb-5">
+        <a href="{{ path('dossier_medical_statistics') }}" class="btn btn-secondary">Show Statistic  Of Chronic Maladis</a>
+    </div>
+   
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Local{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <br><br><br><br><br><br><br><br><br><br>
+
+        <h1>Local</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+                <tr style="background-color: white;">
+                    <th style="background-color: white;">Id</th>
+                    <td style="background-color: white;">{{ local.id }}</td>
+                </tr>
+                <tr style="background-color: white;">
+                    <th style="background-color: white;">Nom</th>
+                    <td style="background-color: white;">{{ local.nom }}</td>
+                </tr>
+                <tr style="background-color: white;">
+                    <th style="background-color: white;">Adresse</th>
+                    <td style="background-color: white;">{{ local.adresse }}</td>
+                </tr>
+                 <tr style="background-color: white;">
+                    <th style="background-color: white;">image</th>
+                    <td><img src="{{ asset('uploads/local/' ~ local.image) }}" alt="local Image"  style="max-height: 600px; max-width: 500px; border-radius: 5px;">
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="buttons">
+            <a class="btn btn-primary" href="{{ path('app_local_index') }}">Retour à la liste</a>
+            <a class="btn btn-success" href="{{ path('app_local_edit', {'id': local.id}) }}">Modifier</a>
+        </div>
+
+        {{ include('local/_delete_form.html.twig') }}
+    </div>
+    
+{% endblock %}

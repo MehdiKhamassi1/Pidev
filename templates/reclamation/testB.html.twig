@@ -1,0 +1,31 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+    <div style="text-align: center;">
+        <h1>Reclamation List</h1>
+        <form method="GET" action="{{ path('app_reclamation_indexB') }}">
+            <label for="patientId">Filter by Patient ID:</label>
+            <input type="text" id="patientId" name="patientId" value="{{ app.request.query.get('patientId') }}">
+            <button type="submit">Filter</button>
+        </form>
+        <br><br><br><br><br><br>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+            {% for reclamation in reclamations %}
+                <div style="width: 300px; margin: 10px; padding: 10px; border: 1px solid #ccc;">
+                    <h2>Sujet</h2>
+                    <p>{{ reclamation.sujet }}</p>
+                    <h2>Description</h2>
+                    <p>{{ reclamation.contenu }}</p>
+                    <p>
+                        <a href="{{ path('app_reclamation_showB', {'id': reclamation.id}) }}">Show</a>
+                        <a href="{{ path('app_reclamation_editB', {'id': reclamation.id}) }}">Edit</a>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+        <br><br><br><br><br><br>
+    </div>
+{% endblock %}

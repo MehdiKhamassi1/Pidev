@@ -1,0 +1,134 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Charity Organizations{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('path/to/your/styles.css') }}">
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #f9f9f9; /* Background color for the body */
+        font-family: "Roboto", helvetica, arial, sans-serif;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .table-title {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .org-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .org-box {
+        background: #ffffff; /* Background color for the boxes */
+        border-radius: 10px; /* Border radius for the boxes */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for the boxes */
+        margin: 20px; /* Margin between the boxes */
+        padding: 20px; /* Padding inside the boxes */
+        width: calc(33.33% - 40px); /* Adjust width as needed */
+        transition: all 0.3s ease; /* Smooth transition */
+    }
+
+    .org-box:hover {
+        transform: translateY(-5px); /* Lift the box slightly on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Add a stronger shadow on hover */
+    }
+
+    .org-box h4 {
+        color: #333333; /* Color for the box titles */
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 0;
+    }
+
+    .org-box-content {
+        color: #666666; /* Color for the content inside the boxes */
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .org-box-actions {
+        margin-top: 20px;
+        text-align: center; /* Center align actions */
+    }
+
+    .action-link {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 0 5px;
+        background-color: #6A0DAD; /* Background color for action links */
+        color: #ffffff; /* Text color for action links */
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+    }
+
+    .action-link:hover {
+        background-color: #4E0A73; /* Darken the background color on hover */
+    }
+
+    .btn-create {
+        background-color: #6A0DAD;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+        margin-top: 40px;
+    }
+
+    .btn-create:hover {
+        background-color: #4E0A73;
+    }
+</style>
+
+<div class="container">
+    <div class="table-title">
+        <h3>Charity Organizations List</h3>
+    </div>
+
+    <div class="org-container">
+        {% for organisation in organisations %}
+        <div class="org-box">
+        <center>
+            <h4>{{ organisation.nom }}</h4>
+            <div class="org-box-content">
+               <center>
+                <p><strong>Address:</strong> {{ organisation.adresse }}</p>
+                <p><strong>Email:</strong> {{ organisation.email }}</p>
+                <p><strong>Phone Number:</strong> {{ organisation.numTel }}</p>
+                <img src="{{ asset('uploads/orgs/' ~ organisation.image) }}" alt="Organisation Image"  style="max-height: 100px; max-width: 100px; border-radius: 5px;">
+            </div>
+            <div class="org-box-actions">
+            <br>
+                <a href="{{ path('app_organisation_show', {'id': organisation.id}) }}" class="action-link">Show</a>
+                
+                <a href="{{ path('app_organisation_edit', {'id': organisation.id}) }}" class="action-link">Edit</a>
+                <br><br>
+                {{ include('organisation/_delete_form.html.twig') }}
+            </div>
+        </div>
+        </center>
+        {% else %}
+        <p>No records found</p>
+        {% endfor %}
+    </div>
+
+    <center>
+        <a href="{{ path('app_organisation_new') }}" class="btn-create">Create new</a>
+    </center>
+</div>
+<br><br><br>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Dossier medical{% endblock %}
+
+{% block content %}
+    <h2>Creation Dossier medical</h2>
+<br><br><br><br><br>
+<div>
+<center>
+<table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    {{ include('dossiermedical/_form.html.twig') }}
+
+               
+                </td>
+             </tr>
+       </tbody>
+       </table>
+</center>
+
+    <a href="{{ path('app_dossiermedical_index') }}">back to list</a>
+{% endblock %}

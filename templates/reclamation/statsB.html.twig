@@ -1,0 +1,47 @@
+{% extends 'baseback.html.twig' %}
+{% block title %}New Reclamation{% endblock %}
+ {% block body %}
+ {% endblock %}
+{% block content %}
+<center>
+
+<center><div id="barchart"></div></center>
+<div>
+<center> <a href="{{ path('app_reclamation_indexB') }}" class="btn btn-primary">Back to list</a> </center>
+</div>
+<button onclick="downloadChartAsPDF()">Download as PDF</button>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable({{ dat|raw }});
+
+        var options = {'title':'Graphs', 'width':500, 'height':400 , 'colors': ['#50C878']};
+
+        var chart = new google.charts.Bar(document.getElementById('barchart'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+        function downloadChartAsPDF() {
+        var chartContainer = document.getElementById('barchart');
+        var chartSvg = chartContainer.getElementsByTagName('svg')[0].outerHTML;
+        var centeredChartHtml = '<div style="text-align: center; padding: 20px;">' +
+        '<h1>Sentimental levels of the claims </h1>' +
+        '<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">' +
+        chartSvg +
+        '</div>' +
+        '</div>';
+        var pdfOptions = {
+            filename: 'chart.pdf',
+            image: { type: 'svg', raw: centeredChartHtml}
+        };
+
+        html2pdf().from(centeredChartHtml).set(pdfOptions).save();
+        }
+    
+</script>
+</center>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consultation index{% endblock %}
+
+{% block body %}
+    <h1>Consultation index</h1>
+<br><br><br><br><br>
+
+<center>
+  
+ <a class="fcc_btn" style=" border:none; background-color: cadetblue; color:#fff; padding:10px 20px; font-size:16px; margin:20px; cursor: pointer;" href="{{ url('app_consultation_telecons') }}">Teleconsultation</a>
+                 <a class="fcc_btn" style=" border:none; background-color: cadetblue; color:#fff; padding:10px 20px; font-size:16px; margin:20px; cursor: pointer;" href="{{ url('app_consultation_new') }}">book online consultation</a>
+                 <div class="article" style="background-color: #f2f2f2;margin-top: 60px;margin-bottom: 30px; padding: 20px; border-radius: 5px; width:400px; heigth:200px ">
+                        <img src="/images/urgent.svg" alt="Description" width="100" height="100" margin-top= "60px" margin-bottom= "360px">
+
+        <p>Pour les situations constituant une URGENCE, nous vous recommandons d’appeler un service d’urgences ou bien e vous adresser au service d’urgence le plus proche de vous.</p>
+                  </div> 
+                  <h1>Blog</h1>
+    
+   
+    
+        <table>
+
+<tbody>
+
+            <tr>
+            <td>
+    <div class="article" style="background-color: #f2f2f2; padding: 20px; border-radius: 5px; width:400px; heigth:900px ">
+        <h2>This is an article created by our precious members</h2>
+                <img src="/images/health_worker.svg" alt="Description" width="300" height="200" margin-top= "60px" margin-bottom= "60px">
+
+        <p>My experience with the Dentist was amazingly unforgettable, i would recommand noTreatment</p>
+    </div>
+    </td>
+    
+              <td>
+
+    <div class="article" style="background-color: #f2f2f2; padding: 20px; border-radius: 5px; width:400px; heigth:200px ">
+        <h2>This is an article created by our precious members</h2>
+                        <img src="/images/telecons.svg" alt="Description" width="300" height="200">
+
+        <p>Video Consultation is a life and time saving, no queue waiting. Thank you</p>
+    </div>
+    </td>
+     <td>
+
+    <div class="article" style="background-color: #f2f2f2; padding: 20px; border-radius: 5px; width:400px; heigth:200px ">
+        <h2>This is an article created by our precious members</h2>
+                        <img src="/images/dossier_med.svg" alt="Description" width="300" height="200">
+
+        <p>I'm more comfortable with my health because i feel safe using these organized doc schedules</p>
+    </div>
+    </td>
+                        </tr>
+
+         
+        </tbody>
+            </table>
+                </center>
+
+<script>
+        var body = document.getElementsByTagName("body");
+        var div = document.createElement("div");
+        var host = window.location.host ? window.location.origin : 'http://localhost/';
+        div.innerHTML = `<iframe id="synvision_ai_iframe" name="synvision_ai_iframe" src="http://synvision.ai/chat-iframe?uuid=VNCYgMgf&host=${host}" height = "960px" width = "750px" style="position:fixed;right:0;bottom: 50px;z-index: 100;border:none"></iframe>`;
+        document.body.appendChild(div);
+    </script>
+</div>
+
+    
+
+  <h1 class="display-4">Consultation List</h1>
+        <div class="my-5"></div>
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Patient</th>
+                    <th scope="col">Docteur</th>
+                    <th scope="col">Dossier medical</th>
+                    <th scope="col">Date Consultation</th>
+                    <th scope="col">Email</th>
+
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for consultation in consultations %}
+                    <tr>
+                        <td>{{ consultation.id }}</td>
+                        <td>{{ consultation.patient }}</td>
+                        <td>{{ consultation.docteur }}</td>
+                        <td>{{ consultation.dossiermedical.id }}</td>
+<td>{{ consultation.dateconsultation|date('Y-m-d') }}</td>
+
+                        <td>{{ consultation.Email }}</td>
+
+                        <td>
+                            <a href="{{ path('app_consultation_show', {'id': consultation.id}) }}" class="btn btn-info btn-sm">
+                                {{ 'Voir'|trans }}
+                            </a>
+                            <a href="{{ path('app_consultation_edit', {'id': consultation.id}) }}" class="btn btn-warning btn-sm">
+                                {{ 'Éditer'|trans }}
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">{{ 'Aucune consultation trouvée.'|trans }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+{% endblock %}
+
+
+
+
+
+

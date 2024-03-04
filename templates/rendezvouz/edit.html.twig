@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Rendezvouz{% endblock %}
+
+{% block body %}
+    <div class="container">
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <h1 class="mt-5">Edit Rendez-vous</h1>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                {{ include('rendezvouz/_form.html.twig', {'button_label': 'Update'}) }}
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a class="btn btn-primary mr-2" href="{{ path('app_rendezvouz_index') }}">Back to List</a>
+            
+        </div>
+
+        <div class="mt-4">
+            {{ include('rendezvouz/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

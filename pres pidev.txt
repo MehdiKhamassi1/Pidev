@@ -1,0 +1,35 @@
+Introduction:
+
+Notre projet consiste à la création d’une nouvelle application mobile et d’un site web dédiés à fournir 
+une plateforme complète et conviviale pour la gestion des besoins des patients et la facilitation des 
+services médicaux.
+
+Tout au long de ce projet on va concentrer sur la réalisation de l'Objectif de Développement 
+Durable numéro 3, axé sur la 
+"Bonne santé et le bien-être". En créant une application mobile et un site web dédiés, nous cherchons à 
+améliorer la gestion des besoins des patients et à faciliter l'accès aux services médicaux, contribuant 
+ainsi à la promotion de sociétés en meilleure santé conformément aux objectifs mondiaux de développement 
+durable.
+
+*Ergonomie:
+-Site facile à naviguer. 
+-Des menus clairs. 
+-Des liens vers des différentes sections
+
+*Sécurité:
+-Utilisation d’une base de données sécurisée similaire à MySQL qui sera phpMyadmin.
+
+*Contenu:
+-Une variété de ressources et d'informations utiles
+-organisées de manière claire et facile à naviguer.
+
+
+
+Notre initiative vise à développer une nouvelle application mobile et un site web dédiés à offrir une plateforme intégrée 
+et conviviale pour la gestion des besoins des patients et la simplification des services médicaux. Cette solution s'inscrit 
+dans le cadre de l'Objectif de Développement Durable numéro 3 (ODD 3) de l'ONU, qui est de garantir une vie saine et promouvoir 
+le bien-être de tous, en mettant l'accent sur l'accès équitable aux soins de santé, la prévention des maladies, et la promotion 
+de la santé à tous les niveaux de la société. En exploitant la technologie, notre projet contribue à améliorer la santé mondiale 
+en facilitant l'accès aux soins médicaux, en renforçant la gestion proactive des besoins des patients, et en favorisant une 
+interaction plus efficace entre les professionnels de la santé et les bénéficiaires, alignant ainsi nos efforts avec 
+les objectifs de développement durable de l'ONU.

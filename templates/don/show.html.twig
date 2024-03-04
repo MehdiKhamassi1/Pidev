@@ -1,0 +1,135 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Donations{% endblock %}
+
+{% block content %}
+<style>
+    {# Include an external stylesheet #}
+    @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #5AAC4E;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        background-color: #fff;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+
+    th {
+        background-color: #5AAC4E;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    td {
+        background-color: #f9f9f9;
+    }
+
+    .btn-primary {
+        background-color: #5AAC4E;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .btn-primary:hover {
+        background-color: #4E0A73;
+    }
+
+    .btn-edit {
+        color: #5AAC4E;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+
+    .btn-edit:hover {
+        text-decoration: underline;
+    }
+
+    .delete-form {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <h1>Donation Details</h1>
+
+    <table>
+        <tbody>
+            
+            <tr>
+                <th>Donator Name</th>
+                <td>{{ don.nom }}</td>
+            </tr>
+            <tr>
+                <th>Donator Lastname</th>
+                <td>{{ don.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Donator Email</th>
+                <td>{{ don.email }}</td>
+            </tr>
+            <tr>
+                <th>Donation Description</th>
+                <td>{{ don.description }}</td>
+            </tr>
+            <tr>
+                <th>Donation Type</th>
+                <td>{{ don.type }}</td>
+            </tr>
+
+                <tr>
+                <th>Amount</th>
+                <td>{{ don.montant }} TND</td>
+            </tr>
+
+            <tr>
+                <th>Donation Image</th>
+                <td><img src="{{ asset('uploads/dons/' ~ don.image) }}" alt="Don Image" class="img-fluid mb-3" style="max-height: 500px; max-width: 500px; border-radius: 5px;"></td>
+            </tr>
+            <tr>
+                <th>Organisation</th>
+                <td>{{ don.Organisation }}</td>
+            </tr>
+        </tbody>
+    </table>
+<center>
+    <a href="{{ path('app_don_indexB') }}" class="btn btn-primary">Back to List</a>
+    <a href="{{ path('app_don_edit', {'id': don.id}) }}" class="btn btn-primary">Edit</a>
+<br> <br>
+    {{ include('don/_delete_form.html.twig') }}
+    </center>
+</div>
+{% endblock %}
