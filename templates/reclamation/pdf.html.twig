@@ -1,0 +1,25 @@
+<div style="text-align: center;">
+        <br><br><br><br><br><br>
+    <br><br><br>
+
+    <center><h1>Reclamation List</h1></center>
+    <br><br><br>
+    
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    {% for reclamation in reclamations %}
+        <div style="width: 650px; margin: 10px; padding: 10px; border: 1px solid #ccc;background-color:#93DC5C;">
+            <h2>Sujet</h2>
+            <p>{{ reclamation.sujet }}</p>
+            <h2>Description</h2>
+            <p>{{ reclamation.contenu }}</p>
+            <h2>Reponse</h2>
+            {% for reponse in reclamation.reponses %}
+            <p>{{ reponse.response }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+<br><br><br><br><br><br>
+</div>
+<div>
+</div>

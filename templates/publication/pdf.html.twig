@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NO TREATMENT</title>
+    <style>
+        .green-bar {
+            background-color: #4CAF50;
+            height: 10px;
+        }
+        .wide-green-band {
+            background-color: #4CAF50;
+            height: 50px; /* Ajustez la hauteur selon vos préférences */
+            width: 100%; /* Pour couvrir toute la largeur de la page */
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            line-height: 50px; /* Pour centrer verticalement le texte */
+        }
+    </style>
+</head>
+<body>
+    <div class="green-bar"></div>
+    <header>
+        <img src="{{ asset('public\images\log.png') }}" alt="Logo">
+    </header>
+    <div class="wide-green-band">
+        NO TREATMENT
+    </div>
+    <div class="table-responsive">
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Contenu</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for publication in publications %}
+                <tr>
+                    <td>{{ publication.id }}</td>
+                    <td>{{ publication.titre }}</td>
+                    <td>{{ publication.contenu }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

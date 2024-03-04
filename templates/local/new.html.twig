@@ -1,0 +1,23 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}New Local{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="mt-4">Create new Local</h1>
+            
+            <div class="form-container mt-4">
+                {{ include('local/_form.html.twig') }} 
+            </div>
+
+            <div class="mt-4">
+                <a href="{{ path('app_local_index') }}" class="btn btn-primary">Back to list</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

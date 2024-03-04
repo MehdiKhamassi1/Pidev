@@ -1,0 +1,14 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+                            {% if form_errors(form.sujet) %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form_errors(form.sujet) }}
+                                </div>
+                            {% endif %}
+                            {% if form_errors(form.contenu) %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form_errors(form.contenu) }}
+                                </div>
+                            {% endif %}
+{{ form_end(form) }}

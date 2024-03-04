@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Donations{% endblock %}
+
+{% block body %}
+<br><br><br><br><br><br><br><br>
+<center>
+  <h1 style="color: #5AAC4E;"> Donations</h1>
+</center>
+<br>
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+{% set sortedDons = dons|sort %}
+
+
+  {% for don in sortedDons %}
+  <div style="border: 2px solid #5AAC4E; border-radius: 10px; margin: 10px; padding: 20px; width: 300px; background-color: #EAF4EA;">
+    <div style="text-align: center;">
+      <strong style="font-size: 20px; color: black;">ID: {{ don.id }}</strong>
+    </div>
+    <hr style="border: 1px solid #5AAC4E;">
+    <div>
+      <div>
+        <strong style="color: #5AAC4E;">Donator Name:</strong> <span style="color: black;">{{ don.nom }}</span>
+      </div>
+
+    </div>
+    <div>
+      <strong style="color: #5AAC4E;">Donator Lastname:</strong> <span style="color: black;">{{ don.prenom }}</span>
+    </div>
+    <div>
+      <strong style="color: #5AAC4E;">Donation Type</strong> <span style="color: black;">{{ don.type }}</span>
+    </div>
+    <div>
+      <strong style="color: #5AAC4E;">Description:</strong> <span style="color: black;">{{ don.description }}</span>
+    </div>
+    {% if don.montant != 0 %}
+    <div>
+      <strong style="color: #5AAC4E;">Montant:</strong> <span style="color: black;">{{ don.montant }} TND</span>
+    </div><br>
+    {% endif %}
+    {% if don.image != null %}
+    <div style="text-align: center;">
+      <img src="{{ asset('uploads/dons/' ~ don.image) }}" alt="Don Image" class="img-fluid mb-3" style="max-height: 100px; max-width: 100px; border-radius: 5px;">
+    </div>
+    {% endif %}
+    <div style="text-align: center;">
+
+
+      <br> <br>
+
+    </div>
+  </div>
+  {% else %}
+  <div style="border: 2px solid #5AAC4E; border-radius: 10px; margin: 10px; padding: 20px; width: 300px; background-color: #EAF4EA;">
+    <div style="text-align: center; color: black;">
+      Unfortunately there are no Donations
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<br>
+<center>
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+ <button type="button" class="btn" style="background-color: #5AAC4E; color: #ffffff; padding: 10px 20px; border-radius: 4px;" onclick="window.location='{{ path('app_don_new') }}'">Create new</button>
+{% endif %}
+</center>
+<br><br>
+<script>
+        var body = document.getElementsByTagName("body");
+        var div = document.createElement("div");
+        var host = window.location.host ? window.location.origin : 'http://127.0.0.1/';
+        var host = window.location.host ? window.location.origin : 'http://localhost/';
+        div.innerHTML = `<iframe id="synvision_ai_iframe" name="synvision_ai_iframe" src="http://synvision.ai/chat-iframe?uuid=jlmqpDdu&host=${host}" height = "760px" width = "550px" style="position:fixed;right:0;bottom: 20px;z-index: 100;border:none"></iframe>`;
+        document.body.appendChild(div);
+    </script>
+{% endblock %}
+
+

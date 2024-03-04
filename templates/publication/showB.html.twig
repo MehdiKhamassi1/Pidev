@@ -1,0 +1,82 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Publication{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <br><br><br><br><br><br><br>
+            <h1 class="display-4 mb-4 text-primary">{{ publication.titre }}</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            {% if publication.image %}
+                <img src="{{ asset('uploads/publication/' ~ publication.image) }}" alt="Publication Image" class="img-fluid mb-3">
+            {% else %}
+                <p class="text-muted">No image available</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                       <p> <td>{{ publication.contenu }}</td></p>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <button onclick="downloadTableAsPDF()" class="btn btn-primary">Download as PDF</button>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-8 d-flex justify-content-between">
+            <a href="{{ path('app_publication_indexB') }}" class="btn btn-secondary">Back to List</a>
+
+            {# Ajout du bouton Delete avec une couleur danger (rouge) #}
+            {% if publication.publication is empty %}
+            {{ include('publication/_delete_form1.html.twig') }}
+            {% endif %} 
+    </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <h2 class="mt-5 mb-3">Commentaires:</h2>
+    </div>
+
+    <div class="row justify-content-center">
+        <table class="table table-bordered">
+            <tbody>
+                {% for commentaire in publication.Publication %}
+                    <tr>
+                        <th>Content</th>
+                        <td>{{ commentaire.contenu }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script type="text/javascript">
+        function downloadTableAsPDF() {
+            var tableContainer = document.getElementById('ff');
+            var pdfOptions = {
+                filename: 'table.pdf',
+            };
+
+            html2pdf(tableContainer, pdfOptions);
+        }
+    </script>
+</div>
+{% endblock %}

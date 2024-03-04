@@ -1,0 +1,67 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Donations{% endblock %}
+
+{% block content %}
+
+<br><br><br><br>
+<center>
+  <h1 style="color: #5AAC4E;"> Donations</h1>
+</center>
+<br>
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+{% set sortedDons = dons|sort %}
+
+  {% for don in sortedDons %}
+  
+  <div style="border: 2px solid #5AAC4E; border-radius: 10px; margin: 10px; padding: 20px; width: 300px; background-color: #EAF4EA;">
+    <div style="text-align: center;">
+      <strong style="font-size: 20px; color: black;">ID: {{ don.id }}</strong>
+    </div>
+    <hr style="border: 1px solid #5AAC4E;">
+    <div>
+      <div>
+    <strong style="color: #5AAC4E;">Donator Name:</strong> <span style="color: black;">{{ don.nom }}</span>
+</div>
+
+    </div>
+    <div>
+      <strong style="color: #5AAC4E;">Donator Lastname:</strong> <span style="color: black;">{{ don.prenom }}</span>
+    </div>
+    <div>
+      <strong style="color: #5AAC4E;">Donation Type:</strong> <span style="color: black;">{{ don.type }}</span>
+    </div>
+
+{% if don.montant != 0 %}
+    <div>
+      <strong style="color: #5AAC4E;">Amount:</strong> <span style="color: black;">{{ don.montant }} TND</span>
+    </div>
+     {% endif %}
+
+   {% if don.image != null %}
+    <div style="text-align: center;">
+      <img src="{{ asset('uploads/dons/' ~ don.image) }}" alt="Don Image" class="img-fluid mb-3" style="max-height: 150px; max-width: 150px; border-radius: 5px;">
+    </div>
+    {% endif %}
+     <br>
+    <div style="text-align: center;">
+      <a href="{{ path('app_don_showB', {'id': don.id}) }}" style="display: inline-block; padding: 8px 16px; background-color: #5AAC4E; color: #fff; text-decoration: none; border-radius: 4px; margin-right: 10px;">Show</a>
+      <a href="{{ path('app_don_edit', {'id': don.id}) }}" style="display: inline-block; padding: 8px 16px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 4px;">Edit</a>
+      <br> <br>
+      {{ include('don/_delete_form.html.twig') }}
+    </div>
+  </div>
+  {% else %}
+  <div style="border: 2px solid #5AAC4E; border-radius: 10px; margin: 10px; padding: 20px; width: 300px; background-color: #EAF4EA;">
+    <div style="text-align: center; color: black;">
+      Unfortunately there are no Donations 
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<br>
+<center>
+
+</center>
+<br><br>
+{% endblock %}

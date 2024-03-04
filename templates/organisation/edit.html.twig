@@ -1,0 +1,89 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}<center>Edit Organisation</center>{% endblock %}
+
+{% block content %}
+<style>
+
+/* Custom purple button */
+.btn-purple {
+    color: #fff;
+    background-color: #6A0DAD;
+    border-color: #6A0DAD;
+}
+
+/* On hover effect */
+.btn-purple:hover {
+    color: #fff;
+    background-color: #4E0A73;
+    border-color: #4E0A73;
+}
+
+
+</style>
+
+<center>
+<br><br>
+    <h1>Edit Organisation</h1>
+    <br><br>
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <div class="form-group">
+                    {{ form_label(form.nom) }}
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.nom) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.nom) }}
+                        </div>
+                    {% endif %}
+                </div>
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <div class="form-group">
+                    {{ form_label(form.adresse) }}
+                    {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.adresse) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.adresse) }}
+                        </div>
+                    {% endif %}
+                </div>
+
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <div class="form-group">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.email) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.email) }}
+                        </div>
+                    {% endif %}
+                </div>
+
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <div class="form-group">
+                    {{ form_label(form.num_tel) }}
+                    {{ form_widget(form.num_tel, {'attr': {'class': 'form-control'}}) }}
+                    {% if form_errors(form.num_tel) %}
+                        <div class="alert alert-danger mt-2">
+                            {{ form_errors(form.num_tel) }}
+                        </div>
+                    {% endif %}
+                </div>
+
+
+    {{ include('organisation/_form.html.twig', {'button_label': 'Update'}) }}
+<br>
+    <a href="{{ path('app_organisation_index') }}" class="btn btn-purple">Back to list</a>
+
+<br><br>
+    {{ include('organisation/_delete_form.html.twig') }}
+    <br><br><br>
+    </center>
+{% endblock %}

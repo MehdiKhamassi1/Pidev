@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+      function checkRecaptcha() {
+        var recaptchaResponse = grecaptcha.getResponse();
+        if (recaptchaResponse.length == 0) {
+          // reCAPTCHA not checked, disable submit button
+          document.getElementById('submit-btn').disabled = true;
+        } else {
+          // reCAPTCHA checked, enable submit button
+          document.getElementById('submit-btn').disabled = false;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form action="" method="POST" onsubmit="checkRecaptcha()">
+      {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+      {{ form_widget(form) }}
+      
+      <!-- reCAPTCHA widget -->
+      <div class="g-recaptcha"  data-sitekey="6LczZ38pAAAAACXi3dkyTuqBMEy8PAq_qIT-tAWR" data-callback="checkRecaptcha"></div>
+      
+      <!-- Submit button -->
+      <button id="submit-btn" class="btn" style="background-color: #5AAC4E; color: #ffffff;" type="submit" disabled>{{ button_label|default('ADD') }}</button>
+      
+      {{ form_end(form) }}
+    </form>
+  </body>
+</html>

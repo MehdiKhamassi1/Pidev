@@ -1,0 +1,14 @@
+{% extends 'baseback.html.twig' %}
+
+{% block content %}
+ <div class="alert alert-success">
+     {% if don.image %}
+     <img class="rounded-circle" width="50" height="50" src="{{ asset('uploads/dons/')~don.image }}">
+     {% endif %}
+     {{ don.nom }} {{ don.prenom}}  {{ don.montant }} TND
+ </div>
+{% endblock %}
+
+{% block title %}
+ {{ don.nom }} {{ don.prenom}}
+{% endblock %}

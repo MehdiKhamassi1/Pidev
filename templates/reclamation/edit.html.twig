@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reclamation{% endblock %}
+ {% block body %}
+ {% endblock %}
+{% block content %}
+<center>
+        <br><br><br><br><br><br>
+    <br><br><br>
+    <h1>Edit Reclamation</h1>
+
+    {{ include('reclamation/_form.html.twig') }}
+        <br>
+    <center> <a href="{{ path('app_reclamation_index', {'id': app.user.id}) }}" class="btn btn-primary">Back to list</a> </center>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    </center>
+{% endblock %}

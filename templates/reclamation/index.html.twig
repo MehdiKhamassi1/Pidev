@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+ {% block body %}
+ {% endblock %}
+{% block content %}
+<div style="text-align: center;">
+    <br><br><br><br><br><br>
+    <br><br><br>
+    <h1>Reclamation List</h1>
+    <a href="{{ path('app_reclamation_new',{'id': app.user.id})}}">Create new</a>
+    <br><br><br><br><br><br>
+    
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    {% for reclamation in reclamations %}
+        <div style="width: 300px; margin: 10px; padding: 10px; border: 1px solid #ccc;">
+            <h2>Sujet</h2>
+            <p>{{ reclamation.sujet }}</p>
+            <h2>Description</h2>
+            <p>{{ reclamation.contenu }}</p>
+            <p>
+                <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}" class="btn btn-primary">Show</a>
+                {% if reclamation.reponses is empty %}
+                <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}" class="btn btn-primary">Edit</a>
+                {% endif %}
+            </p>
+        </div>
+    {% endfor %}
+</div>
+<br><br><br><br><br><br>
+</div>
+
+{% endblock %}
