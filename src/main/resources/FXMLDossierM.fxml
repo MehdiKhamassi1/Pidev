@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchore" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="927.0" style="-fx-background-radius: 40;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMLDossierMController">
+   <children>
+      <ImageView fitHeight="616.0" fitWidth="956.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 40;">
+         <image>
+            <Image url="@bg.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tf_patient_id" layoutX="82.0" layoutY="141.0" prefHeight="25.0" prefWidth="200.0" promptText="id du patient" />
+      <TextArea fx:id="tfmaladie" layoutX="81.0" layoutY="322.0" prefHeight="200.0" prefWidth="200.0" promptText="maladie chronique" />
+      <Button layoutX="333.0" layoutY="520.0" mnemonicParsing="false" onAction="#modifier" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #285D5E;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="460.0" layoutY="519.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #285D5E;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <TextField fx:id="tfrecherche" layoutX="470.0" layoutY="52.0" prefHeight="30.0" prefWidth="242.0" promptText="Recherche" style="-fx-background-radius: 15;" />
+      <Button layoutX="727.0" layoutY="55.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: #285D5E;" text="Tri" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TextField fx:id="tfgrpsang" layoutX="82.0" layoutY="191.0" prefHeight="25.0" prefWidth="200.0" promptText="groupe sanguin" />
+      <Button layoutX="592.0" layoutY="519.0" mnemonicParsing="false" onAction="#afficher" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #285D5E;" text="Afficher" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <TableView fx:id="tvresultat" layoutX="325.0" layoutY="132.0" prefHeight="375.0" prefWidth="533.0">
+         <columns>
+            <TableColumn fx:id="c_patient_id" prefWidth="111.0" style="-fx-background-color: #285D5E;" text="id du patient" />
+            <TableColumn fx:id="cgrpsang" prefWidth="117.0" style="-fx-background-color: #285D5E;" text="groupe sanguin" />
+            <TableColumn fx:id="cstatus" prefWidth="154.0" style="-fx-background-color: #285D5E;" text="resultat des analyses" />
+            <TableColumn fx:id="cmaladie" prefWidth="145.0" style="-fx-background-color: #285D5E;" text="maladie chronique" />
+         </columns>
+      </TableView>
+      <Button layoutX="741.0" layoutY="519.0" mnemonicParsing="false" onAction="#display" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #285D5E;" text="Display" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="81.0" layoutY="91.0" mnemonicParsing="false" onAction="#ajouterDossier" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #285D5E;" text="Ajouter Dossier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="82.0" layoutY="54.0" mnemonicParsing="false" onAction="#gstReponses" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #285D5E;" text="Consultation" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <ComboBox fx:id="status" layoutX="82.0" layoutY="276.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #285D5E;" />
+      <Button layoutX="325.0" layoutY="53.0" onAction="#handleGroupe" prefHeight="30.0" prefWidth="131.0" style="-fx-background-color: #285D5E;" text="Group of cards" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
